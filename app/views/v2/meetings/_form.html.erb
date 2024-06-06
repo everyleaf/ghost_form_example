@@ -1,0 +1,29 @@
+<%= form_with model: @meeting, url: v2_meetings_path do |f| %>
+  <div style="margin-bottom: 1rem;">
+    <div><%= f.label :title %></div>
+    <div><%= f.text_field :title %></div>
+    <p style="color: red;"><%= @meeting.errors.full_messages_for(:title).join %></p>
+  </div>
+  <div style="margin-bottom: 1rem;">
+    <div>Category</div>
+    <%= f.radio_button :category, "real" %>
+    <%= f.label :category, "Real", value: "real" %>
+
+    <%= f.radio_button :category, "online" %>
+    <%= f.label :category, "Online", value: "online" %>
+
+    <%= f.radio_button :category, "hybrid" %>
+    <%= f.label :category, "Hybrid", value: "hybrid" %>
+  </div>
+  <div style="margin-bottom: 1rem;">
+    <div><%= f.label :meeting_room %></div>
+    <div><%= f.text_field :meeting_room %></div>
+  </div>
+  <div style="margin-bottom: 1rem;">
+    <div><%= f.label :meeting_url %></div>
+    <div><%= f.text_field :meeting_url %></div>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

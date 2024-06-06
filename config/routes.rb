@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   end
 
   namespace "v2" do
-    resources :meetings
+    resources :meetings do
+      new do
+        post :refresh
+      end
+    end
   end
 
   root "v2/meetings#root"

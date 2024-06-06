@@ -1,4 +1,4 @@
-<%= form_with model: @meeting, url: v1_meetings_path do |f| %>
+<%= form_with model: @meeting, url: v1_meetings_path, data: { controller: "v1--meetings" } do |f| %>
   <div style="margin-bottom: 1rem;">
     <div><%= f.label :title %></div>
     <div><%= f.text_field :title %></div>
@@ -6,20 +6,20 @@
   </div>
   <div style="margin-bottom: 1rem;">
     <div>Category</div>
-    <%= f.radio_button :category, "real" %>
+    <%= f.radio_button :category, "real", data: { action: "change->v1--meetings#changeCategory" } %>
     <%= f.label :category, "Real", value: "real" %>
 
-    <%= f.radio_button :category, "online" %>
+    <%= f.radio_button :category, "online", data: { action: "change->v1--meetings#changeCategory" } %>
     <%= f.label :category, "Online", value: "online" %>
 
-    <%= f.radio_button :category, "hybrid" %>
+    <%= f.radio_button :category, "hybrid", data: { action: "change->v1--meetings#changeCategory" } %>
     <%= f.label :category, "Hybrid", value: "hybrid" %>
   </div>
-  <div style="margin-bottom: 1rem;">
+  <div style="margin-bottom: 1rem; display: <%= %w[real hybrid].include?(@meeting.category) ? "block" : "none" %>;" class="optional real hybrid">
     <div><%= f.label :meeting_room %></div>
     <div><%= f.text_field :meeting_room %></div>
   </div>
-  <div style="margin-bottom: 1rem;">
+  <div style="margin-bottom: 1rem; display: <%= %w[online hybrid].include?(@meeting.category) ? "block" : "none" %>;" class="optional online hybrid">
     <div><%= f.label :meeting_url %></div>
     <div><%= f.text_field :meeting_url %></div>
   </div>

@@ -1,0 +1,6 @@
+<tr>
+  <td><%= meeting.title %></td>
+  <td><%= meeting.category %></td>
+  <td><%= meeting.meeting_room %></td>
+  <td><%= meeting.meeting_url.present? ? link_to(meeting.meeting_url) : "" %></td>
+</tr>

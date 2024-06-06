@@ -1,0 +1,17 @@
+<h1>Meetings</h1>
+<div style="text-align: right;">
+  <%= link_to "New Meeting", new_v1_meeting_path %>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th><%= Meeting.human_attribute_name(:title) %></th>
+      <th><%= Meeting.human_attribute_name(:category) %></th>
+      <th><%= Meeting.human_attribute_name(:meeting_room) %></th>
+      <th><%= Meeting.human_attribute_name(:meeting_url) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "meeting", collection: @meetings %>
+  </tbody>
+</table>

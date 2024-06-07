@@ -8,7 +8,7 @@ class V2::MeetingsController < ApplicationController
   end
 
   def refresh
-    @meeting = Meeting.new(meeting_params(scope: :imitated_meeting))
+    @meeting = Meeting.new(meeting_params(scope: :ghost_meeting))
     render :new
   end
 

@@ -1,8 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="imitated-form"
+// Connects to data-controller="ghost-form"
 export default class extends Controller {
-  static targets = [ "originalForm", "imitatedForm" ]
+  static targets = [ "originalForm", "ghostForm" ]
 
   connect() {
   }
@@ -12,12 +12,12 @@ export default class extends Controller {
     formData.delete("authenticity_token")
 
     for (const [key, value] of formData.entries()) {
-      const imitated_key = "imitated_" + key
-      const input = this.imitatedFormTarget.querySelector(`input[name="${imitated_key}"]`)
+      const ghost_key = "ghost_" + key
+      const input = this.ghostFormTarget.querySelector(`input[name="${ghost_key}"]`)
       if (input) {
         input.value = value;
       }
     }
-    this.imitatedFormTarget.requestSubmit()
+    this.ghostFormTarget.requestSubmit()
   }
 }

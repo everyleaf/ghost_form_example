@@ -1,5 +1,5 @@
-<turbo-frame id="meeting-form" data-controller="imitated-form">
-  <%= form_with model: @meeting, url: v2_meetings_path, data: { "turbo-frame" => "_top", "imitated-form-target" => "originalForm" } do |f| %>
+<turbo-frame id="meeting-form" data-controller="ghost-form">
+  <%= form_with model: @meeting, url: v2_meetings_path, data: { "turbo-frame" => "_top", "ghost-form-target" => "originalForm" } do |f| %>
     <div style="margin-bottom: 1rem;">
       <div><%= f.label :title %></div>
       <div><%= f.text_field :title %></div>
@@ -7,13 +7,13 @@
     </div>
     <div style="margin-bottom: 1rem;">
       <div>Category</div>
-      <%= f.radio_button :category, "real", data: { action: "imitated-form#submit" } %>
+      <%= f.radio_button :category, "real", data: { action: "ghost-form#submit" } %>
       <%= f.label :category, "Real", value: "real" %>
 
-      <%= f.radio_button :category, "online", data: { action: "imitated-form#submit" } %>
+      <%= f.radio_button :category, "online", data: { action: "ghost-form#submit" } %>
       <%= f.label :category, "Online", value: "online" %>
 
-      <%= f.radio_button :category, "hybrid", data: { action: "imitated-form#submit" } %>
+      <%= f.radio_button :category, "hybrid", data: { action: "ghost-form#submit" } %>
       <%= f.label :category, "Hybrid", value: "hybrid" %>
     </div>
     <% if %w[real hybrid].include?(@meeting.category) %>
@@ -32,7 +32,7 @@
       <%= f.submit %>
     </div>
   <% end %>
-  <%= form_with scope: "imitated_meeting", model: @meeting, url: refresh_new_v2_meeting_path, method: :post, data: { "imitated-form-target" => "imitatedForm" } do |f| %>
+  <%= form_with scope: "ghost_meeting", model: @meeting, url: refresh_new_v2_meeting_path, method: :post, data: { "ghost-form-target" => "ghostForm" } do |f| %>
     <%= f.hidden_field :title %>
     <%= f.hidden_field :category %>
     <%= f.hidden_field :meeting_room %>

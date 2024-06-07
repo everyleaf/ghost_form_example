@@ -1,9 +1,9 @@
 # README
 
-This is an example application to show how the 'Imitated Form' pattern works.
+This is an example application to show how the 'Ghost Form' pattern works.
 
 * v1 - General solution using stimulus
-* v2 - Imitated Form pattern
+* v2 - Ghost Form pattern
 
 ## How to run
 
